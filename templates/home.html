@@ -1,0 +1,91 @@
+{% extends "theme.html" %}
+  {% block style %}
+    <meta name="baidu-site-verification" content="MRMBZA60wg" />
+    <meta name="baidu-site-verification" content="MoExjihOpR" />
+  {% endblock style %}
+
+  {% block content %}
+  <div id="top-display" class="container-fluid p-0">
+      <div id="topDisplay" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#topDisplay" data-slide-to="0" class="active"></li>
+        <li data-target="#topDisplay" data-slide-to="1" class=""></li>
+        <li data-target="#topDisplay" data-slide-to="2" class=""></li>
+      </ol>
+      <div class="carousel-inner">
+        <a class="carousel-item active" href="">
+            <img class="d-block w-100" src="https://s2.ax1x.com/2019/03/19/An5zfe.gif" alt="slide1">
+        </a>
+        <a class="carousel-item" href="">
+            <img class="d-block w-100" src="https://s2.ax1x.com/2019/03/19/AnI9ld.png" alt="slide2">
+        </a>
+        <a class="carousel-item " href="">
+            <img class="d-block w-100" src="https://s2.ax1x.com/2019/03/19/AnIpSH.png" alt="slide3">
+        </a>
+      </div>
+      <a class="carousel-control-prev" href="#topDisplay" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#topDisplay" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+      </a>
+      </div>
+  </div>
+
+  <main role="main">
+
+    <section class="jumbotron text-center" style="background-image:url(https://s2.ax1x.com/2019/03/19/An57l9.jpg);background-size:cover;">
+    <canvas id="home-canvas" style="height:10px; width:100%;"></canvas>
+    <p>
+      <a href="https://github.com/nature1995" class="btn btn-danger">Github</a>
+      <a href="https://www.linkedin.com/in/ziran-gong" class="btn btn" style="background-color: #2c90ee; color: white">Linkedin</a>
+      <a href="{% url 'ablog' %}" class="btn btn-dark btn-lg">Blog</a>
+      <a href="http://www.ranxiaolang.com:8000" class="btn btn-light">Cloud Disk</a>
+    </p>
+    <p>
+      <a href="https://github.com/nature1995">
+        <span style="color: #d72e3d;">
+        <i class="fab fa-github fa-3x"></i>
+        </span>
+      </a>
+      <a href="https://www.linkedin.com/in/ziran-gong">
+      <span style="color: #2c90ee;">
+        <i class="fab fa-linkedin-in fa-3x"></i>
+        </span>
+      </a>
+      <a href="{% url 'ablog' %}">
+        <span style="color: #2e3338;">
+        <i class="fas fa-blog fa-3x"></i>
+        </span>
+      </a>
+      <a href="http://www.ranxiaolang.com:8000">
+        <span style="color: #f7f8f9;">
+        <i class="fas fa-server fa-3x"></i>
+        </span>
+      </a>
+    </p>
+    </section>
+
+    <section id="gallery">
+      <div class="album py-0">
+          <div class="container">
+            <div class="row">
+              {% for gallery in gallerys.all|dictsortreversed:"last_mod_time" %}
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <a href="{{ gallery.url}}"><img class="card-img-top" src="{{ gallery.image.url }}"></a>
+                  <div class="card-body">
+                    <p class="card-text font-weight-bold" style="text-align: center"><a href="{{ gallery.url}}">{{gallery.title}}</a></p>
+                    <p class="card-text">{{gallery.description}}</p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+            </div>
+          </div>
+      </div>
+    </section>
+  </main>
+  {% endblock content %}
